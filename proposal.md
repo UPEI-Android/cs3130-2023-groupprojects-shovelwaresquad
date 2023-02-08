@@ -1,2 +1,4 @@
-1. Make Gaem
-2. $$Proft$$
+#Make App
+with code and widgets and stuff
+#Proft
+money. Dollarydoos, in fact
