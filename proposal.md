@@ -1,4 +1,2 @@
-#Make App
-with code and widgets and stuff
-#Proft
-money. Dollarydoos, in fact
+1. Make the app 
+2. Add more bullet points
