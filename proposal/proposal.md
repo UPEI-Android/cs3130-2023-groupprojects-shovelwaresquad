@@ -12,7 +12,7 @@
 Simple web scraping library for dart. 
 - https://pub.dev/packages/web_scraper
 
-Overlay Widget.
+Overlay widget.
 - https://api.flutter.dev/flutter/widgets/Overlay-class.html 
 ## Tasks: 
 - Establish general themes, color palletes, and UI design 
