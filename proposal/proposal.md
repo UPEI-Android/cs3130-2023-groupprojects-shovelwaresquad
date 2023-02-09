@@ -10,7 +10,9 @@
 5. UI for accessing price information in a user-friendly way
 ## Resources: 
 Simple web scraping library for dart. 
-- https://pub.dev/packages/web_scraper 
+- https://pub.dev/packages/web_scraper
+Overlay Widget: 
+- https://api.flutter.dev/flutter/widgets/Overlay-class.html 
 ## Tasks: 
 - Establish general themes, color palletes, and UI design 
 - Implement UI
