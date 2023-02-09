@@ -4,9 +4,10 @@
 - Functionality to list prices and sales at the best location for relavent items
 ## Components:
 1. Home Screen with several lists 
-2. List Screen with specific lists 
+2. List Screen with specific list details and items
 3. List creation, saving, and deletion 
 4. Web scraper / some method of acquiring prices and locations. 
+5. UI for accessing price information in a user-friendly way
 ## Resources: 
 Simple web scraping library for dart. 
 - https://pub.dev/packages/web_scraper 
