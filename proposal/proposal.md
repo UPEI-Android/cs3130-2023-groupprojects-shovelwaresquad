@@ -8,6 +8,7 @@
 3. List creation, saving, and deletion 
 4. Web scraper / some method of acquiring prices and locations. 
 5. UI for accessing price information in a user-friendly way
+6. Read/Write text files
 ## Resources: 
 Simple web scraping library for dart. 
 - https://pub.dev/packages/web_scraper
@@ -31,4 +32,5 @@ Overlay widget.
   -  Select stores
   -  Find items and prices at all stores 
   -  Return information for specific items when prompted
+-  Create system for reading/writing text files
 ## Mockup Images: 
