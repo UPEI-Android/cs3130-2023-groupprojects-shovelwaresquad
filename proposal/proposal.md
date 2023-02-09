@@ -27,3 +27,4 @@ Simple web scraping library for dart.
   -  Select stores
   -  Find items and prices at all stores 
   -  Return information for specific items when prompted
+# Mockup Images: 
