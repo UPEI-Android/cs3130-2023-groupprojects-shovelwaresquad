@@ -34,3 +34,4 @@ Overlay widget.
   -  Return information for specific items when prompted
 -  Create system for reading/writing text files
 ## Mockup Images: 
+  - sketches have been added in the UI Sketches folder
