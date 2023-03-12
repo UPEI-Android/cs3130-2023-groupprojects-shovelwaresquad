@@ -20,10 +20,9 @@ class _GKeeperList extends State<GKeeperList>{
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: Text("List Name"),
-      ), 
-        /*TODO Bloc Builder goes here,
-        */
+        title: Text("List Name #..."),
+      ),
+      //TODO BlocBuilder in the body to use bloc API
       body: ListView.builder(
         itemCount: temporaryList.length,
         itemBuilder: (BuildContext context, int index){
@@ -32,7 +31,23 @@ class _GKeeperList extends State<GKeeperList>{
           );
         },
       ),
-
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children:  <Widget>[
+          FloatingActionButton(
+            onPressed: (){},
+            backgroundColor: Colors.lightBlueAccent,
+            heroTag: 'buttonRemove',
+            child: const Icon(Icons.remove),
+          ),
+          FloatingActionButton(
+            onPressed: (){},
+            backgroundColor: Colors.lightBlueAccent,
+            heroTag: 'buttonAdd',
+            child: const Icon(Icons.add),
+          ),
+        ],
+      ),
     );
   }
 }
