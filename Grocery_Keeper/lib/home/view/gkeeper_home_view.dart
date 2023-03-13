@@ -36,7 +36,6 @@ class _GKeeperHome extends State<GKeeperHome>{
                     itemCount: state_list.length,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
-
                         ///TODO: fill out container to navigate to new page.
                         onTap: () =>
                             context_list.read<GkeeperHomeCubit>()
@@ -61,7 +60,9 @@ class _GKeeperHome extends State<GKeeperHome>{
           floatingActionButton: BlocBuilder<ListCubit, List<ListItem>>(
             builder: (context_list, state_list) {
               return FloatingActionButton(
-                onPressed: () => state_list.add(ListItem("Enter Title Here", [])),
+                onPressed: () => setState(() {
+                  context_list.read<ListCubit>().addList("Enter Title Here", ["Enter First Item"]);
+                }),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
               );
