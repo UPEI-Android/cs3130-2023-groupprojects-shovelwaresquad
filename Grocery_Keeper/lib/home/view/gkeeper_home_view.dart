@@ -16,8 +16,6 @@ class _GKeeperHome extends State<GKeeperHome>{
 
   @override
   Widget build(BuildContext context) {
-    //final List<String> tempList = <String>['#1','#2','#3','#4','#5','#6','#7','#8','#9','#10'];
-
     return BlocBuilder<GkeeperHomeCubit, GkeeperHomeState>(
       builder: (context, state) {
         return Scaffold(
@@ -46,12 +44,19 @@ class _GKeeperHome extends State<GKeeperHome>{
                                     ? const Color(0xffffffff)
                                     : const Color(0xfcfcfcfc)
                             ),
-                            child: TextFormField (
-                              initialValue: stateList[index].title,
-                              style: const TextStyle(fontSize: 25),
-                              onSaved: (text) => setState(() {
-                                context.read<GkeeperHomeCubit>().changeTitle(stateList[index], text as String);
-                              }),
+                            child: Column (
+                              children: [
+                                TextFormField (
+                                  initialValue: stateList[index].title,
+                                  style: const TextStyle(fontSize: 25),
+                                  onSaved: (text) => setState(() {
+                                    context.read<GkeeperHomeCubit>().changeTitle(stateList[index], text as String);
+                                  })
+                                ),
+                                const Spacer(),
+                                Text(stateList[index].contents.toString()),
+                                const Spacer()
+                              ]
                             )
                         ),
                       );
