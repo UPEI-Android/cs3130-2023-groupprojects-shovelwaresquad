@@ -22,12 +22,13 @@ class _GKeeperList extends State<GKeeperList>{
     {
       var lState = state as GKeeperListSelected;
       ListItem list = lState.list;
+      String tempItemName = "";
       //final List<String> temporaryList = <String>['A', 'B', 'C'];
       return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           centerTitle: true,
-          title: Text("List Name #..."),
+          title: Text(list.title),
         ),
         //TODO BlocBuilder in the body to use bloc API
         body: ListView.builder(
@@ -66,12 +67,15 @@ class _GKeeperList extends State<GKeeperList>{
                             children: <Widget>[
                               Container(
                                 padding: const EdgeInsets.all(8),
-                                child: const TextField(
-                                  decoration: InputDecoration(
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     hintText: 'Enter the item to add here',
                                     labelText: 'Item',
                                   ),
+                                  onChanged: (text) {
+                                    tempItemName = text;
+                                  },
                                 ),
                               ),
                               Container(
@@ -86,7 +90,12 @@ class _GKeeperList extends State<GKeeperList>{
                                 height: 60,
                                 padding: const EdgeInsets.all(8),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      list.contents.add(tempItemName);
+                                    });
+                                    Navigator.pop(context);
+                                  },
                                   child: const Text('Add'),
                                 ),
                               )
