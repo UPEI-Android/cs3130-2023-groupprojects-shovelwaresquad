@@ -135,7 +135,11 @@ class _GKeeperList extends State<GKeeperList>{
                                     clipBehavior: Clip.hardEdge,
                                     child: ListTile(
                                       title: Text(list.contents[index]),
-                                      onTap: () {},
+                                      onTap: () {
+                                        setState(() {
+                                          list.contents.removeAt(index);
+                                        });
+                                      },
                                     ),
                                   );
                                 }
