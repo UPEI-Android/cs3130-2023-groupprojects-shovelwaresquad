@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_keeper/list/view/gkeeper_list_view.dart';
-
-import 'home/view/gkeeper_home_view.dart';
+import 'package:grocery_keeper/routes/route_generator.dart';
 
 
 /// A MaterialApp which sets the `home` to StreakPage.
 class GKeeperApp extends MaterialApp {
-
   GKeeperApp({Key? key}) : super(key: key,
-    home: const GKeeperList(),//GKeeperHome(),
+    initialRoute:  RouteGenerator.homePage,
+    onGenerateRoute: RouteGenerator.generateRoute,
     theme: ThemeData(
       primarySwatch: Colors.green,
-    ),);
+    ),
+  );
 }

@@ -9,8 +9,8 @@ import 'listItem/listItem.dart';
 import 'listItem/list_cubit.dart';
 
 void main() {
-  runApp(GKeeperApp());
- /* BlocOverrides.runZoned(
+  //runApp(GKeeperApp());
+ BlocOverrides.runZoned(
         () => runApp( MultiBlocProvider(
       providers: <BlocProvider>[
         BlocProvider<ListCubit>(
@@ -24,6 +24,4 @@ void main() {
     )),
     blocObserver: ListObserver(),
   );
-  */
-
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_keeper/listItem/listItem.dart';
 import 'package:grocery_keeper/listItem/list_cubit.dart';
 
+import '../../routes/route_generator.dart';
 import '../cubit/gkeeper_home_cubit.dart';
 
 class GKeeperHome extends StatefulWidget {
@@ -33,9 +34,14 @@ class _GKeeperHome extends State<GKeeperHome>{
                     itemCount: stateList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
-                        onTap: () =>
-                            contextList.read<GkeeperHomeCubit>()
-                                .selectList(stateList[index]),
+                        onTap: () => setState(() {
+                          contextList.read<GkeeperHomeCubit>()
+                              .selectList(stateList[index]);
+                          Navigator.pushNamed(
+                            context,
+                            RouteGenerator.listPage,
+                          );
+                        },),
                         child: Container(
                             height: 100,
                             decoration: BoxDecoration(
