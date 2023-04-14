@@ -33,5 +33,4 @@ class GKeeperListRecordAdpater extends TypeAdapter<GKeeperListRecord>{
       ..writeByte(1)
       ..write(obj.content);
   }
-
 }

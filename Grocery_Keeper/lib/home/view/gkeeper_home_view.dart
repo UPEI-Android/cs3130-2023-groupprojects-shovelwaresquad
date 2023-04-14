@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_keeper/list/cubit/gkeeper_local_list_cubit.dart';
 import 'package:grocery_keeper/listItem/listItem.dart';
 import 'package:grocery_keeper/listItem/list_cubit.dart';
 
@@ -26,49 +27,56 @@ class _GKeeperHome extends State<GKeeperHome>{
           ),
           body: BlocBuilder<ListCubit, List<ListItem>>(
             builder: (contextList, stateList) {
-              //state_list.add(ListItem("Enter Title Here", []));
-              if (stateList.isEmpty) {
-                return const Text("No Lists Created :(", style: TextStyle(fontSize: 25));
-              } else {
-                return ListView.builder(
-                    itemCount: stateList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        onTap: () => setState(() {
-                          contextList.read<GkeeperHomeCubit>()
-                              .selectList(stateList[index]);
-                          Navigator.pushNamed(
-                            context,
-                            RouteGenerator.listPage,
-                          );
-                        },),
-                        child: Container(
+              return BlocBuilder<GKeeperLocalListCubit, GKeeperLocalListState>(
+                  builder: (contextLocal, stateLocal) {
+                    if (stateLocal.lists.isEmpty) {
+                      return const Center(child:
+                        Text("No Lists Created", style: TextStyle(fontSize: 25))
+                      );
+                    } else {
+                      return ListView.builder(
+                        itemCount: stateLocal.lists.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            onTap: () => setState(() {
+                              ListItem item = ListItem(stateLocal.lists[index].listTitle,
+                                  stateLocal.lists[index].content);
+                                  stateLocal.lists[index];
+                              contextList.read<GkeeperHomeCubit>()
+                                    .selectList(item, index);
+                              Navigator.pushNamed(
+                                context,
+                                RouteGenerator.listPage,
+                              );
+                            },
+                            ),
+                            child: Container(
                             height: 100,
                             decoration: BoxDecoration(
-                              // Alternate slight variations of white
-                                color: index % 2 == 0
-                                    ? const Color(0xffffffff)
-                                    : const Color(0xfcfcfcfc)
+                            // Alternate slight variations of white
+                            color: index % 2 == 0 ? const Color(0xffffffff) : const Color(0xfcfcfcfc)
                             ),
-                            child: Column (
-                              children: [
-                                TextFormField (
-                                  initialValue: stateList[index].title,
-                                  style: const TextStyle(fontSize: 25),
-                                  onSaved: (text) => setState(() {
-                                    context.read<GkeeperHomeCubit>().changeTitle(stateList[index], text as String);
-                                  })
-                                ),
-                                const Spacer(),
-                                Text(stateList[index].contents.toString()),
-                                const Spacer()
-                              ]
-                            )
-                        ),
+                              child: Column (
+                                  children: [
+                                    TextFormField (
+                                      initialValue: stateLocal.lists[index].listTitle,
+                                      style: const TextStyle(fontSize: 25),
+                                      onSaved: (text) => setState(() {
+                                        context.read<GkeeperHomeCubit>().changeTitle(stateList[index], text as String);
+                                      })
+                                    ),
+                                    const Spacer(),
+                                    Text(stateLocal.lists[index].content.toString()),
+                                    const Spacer()
+                                  ]
+                              )
+                            ),
+                          );
+                      }
                       );
                     }
-                );
-              }
+                  }
+              );
             }
           ),
           floatingActionButton: BlocBuilder<ListCubit, List<ListItem>>(
@@ -76,6 +84,7 @@ class _GKeeperHome extends State<GKeeperHome>{
               return FloatingActionButton(
                 onPressed: () => setState(() {
                   contextList.read<ListCubit>().addList("Enter Title Here", ["Enter First Item"]);
+                  context.read<GKeeperLocalListCubit>().addList("Enter Title Here", ["Enter First Item"]);
                 }),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
