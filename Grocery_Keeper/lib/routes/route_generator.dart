@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:grocery_keeper/home/view/gkeeper_home_view.dart';
 import 'package:grocery_keeper/list/view/gkeeper_list_view.dart';
 import 'package:grocery_keeper/routes/unkown_screen.dart';
+import 'package:grocery_keeper/search/search_page.dart';
 
 class RouteGenerator {
   static const String homePage = '/';
   static const String listPage = '/list';
+  static const String searchPage = '/search';
 
   RouteGenerator._();
 
@@ -20,6 +22,10 @@ class RouteGenerator {
       return MaterialPageRoute(
         builder: (_) => const GKeeperList(),
       );
+      case searchPage:
+        return MaterialPageRoute(
+            builder: (_) => const SearchPage(),
+        );
     }
     if(kDebugMode) {
       return MaterialPageRoute(builder: (context) =>  UnknownScreen());

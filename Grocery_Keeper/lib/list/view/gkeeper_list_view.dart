@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:web_scraper/web_scraper.dart';
 
 import '../../home/cubit/gkeeper_home_cubit.dart';
 import '../../listItem/listItem.dart';
+import '../../listItem/list_cubit.dart';
+import '../../routes/route_generator.dart';
 
 class GKeeperList extends StatefulWidget {
 
@@ -82,7 +85,13 @@ class _GKeeperList extends State<GKeeperList>{
                                 height: 60,
                                 padding: const EdgeInsets.all(8),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      Navigator.pushNamed(
+                                          context,
+                                          RouteGenerator.searchPage);
+                                    });
+                                  },
                                   child: const Text('Search'),
                                 ),
                               ),
