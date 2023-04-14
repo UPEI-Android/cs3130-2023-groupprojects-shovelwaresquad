@@ -90,6 +90,8 @@ class _GKeeperList extends State<GKeeperList>{
                                       Navigator.pushNamed(
                                           context,
                                           RouteGenerator.searchPage);
+                                      context.read<GkeeperHomeCubit>()
+                                          .selectItem(tempItemName);
                                     });
                                   },
                                   child: const Text('Search'),

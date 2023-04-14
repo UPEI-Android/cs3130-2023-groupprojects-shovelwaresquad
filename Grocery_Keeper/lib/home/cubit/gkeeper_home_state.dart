@@ -14,3 +14,8 @@ class GKeeperListSelected extends GkeeperHomeState {
   const GKeeperListSelected(this.list);
 }
 
+class GKeeperItemSelected extends GkeeperHomeState {
+  final String item;
+  const GKeeperItemSelected(this.item);
+}
+

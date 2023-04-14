@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_keeper/home/view/gkeeper_home_view.dart';
 import 'package:web_scraper/web_scraper.dart';
 
 import '../home/cubit/gkeeper_home_cubit.dart';
@@ -22,12 +23,10 @@ class _SearchView extends State<SearchView> {
   List<Map<String, dynamic>>? productImgs;
   List<Map<String, dynamic>>? productPrices;
 
-  String searchItem = "blueberries";
-
-  void fetchProducts() async {
+  void fetchProducts(String searchTerm) async {
     // Loads web page and downloads into local state of library
     if (await webScraper
-        .loadWebPage('/search?q=$searchItem&f=70011')) {
+        .loadWebPage('/search?q=$searchTerm&f=70011')) {
       setState(() {
         productNames = webScraper.getElement(
             'div.css-3ky18c.epettpn0 > a.css-770c6j.epettpn1', ['href', 'aria-label']);
@@ -43,17 +42,18 @@ class _SearchView extends State<SearchView> {
   @override
   void initState() {
     super.initState();
-    // Requesting to fetch before UI drawing starts
-    fetchProducts();
+    // Requesting to fetch before UI drawing start
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GkeeperHomeCubit, GkeeperHomeState>(
         builder: (context, state) {
+          var lState = state as GKeeperItemSelected;
+          fetchProducts(lState.item);
           return Scaffold(
               appBar: AppBar(
-                title: const Text('Product Catalog'),
+                title: const Text('Search Page'),
               ),
               body: Container(
                   child: productNames == null ? const Center(
