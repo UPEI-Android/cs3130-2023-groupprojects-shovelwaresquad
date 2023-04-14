@@ -8,9 +8,9 @@ part 'gkeeper_home_state.dart';
 class GkeeperHomeCubit extends Cubit<GkeeperHomeState> {
   GkeeperHomeCubit() : super(const GkeeperHomeInitial());
 
-  void selectList(ListItem list) {
+  void selectList(ListItem list, int num) {
     print("Wow! I've been tapped! I am item ${list.title}");
-    emit(GKeeperListSelected(list));
+    emit(GKeeperListSelected(list, num));
   }
 
   void changeTitle(ListItem list, String str) {

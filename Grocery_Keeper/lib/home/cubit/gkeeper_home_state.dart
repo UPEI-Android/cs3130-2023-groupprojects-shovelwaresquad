@@ -11,6 +11,7 @@ class GkeeperHomeInitial extends GkeeperHomeState {
 
 class GKeeperListSelected extends GkeeperHomeState {
   final ListItem list;
-  const GKeeperListSelected(this.list);
+  final int num;
+  const GKeeperListSelected(this.list, this.num);
 }
 
