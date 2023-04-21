@@ -4,9 +4,12 @@ import 'package:grocery_keeper/home/view/gkeeper_home_view.dart';
 import 'package:grocery_keeper/list/view/gkeeper_list_view.dart';
 import 'package:grocery_keeper/routes/unkown_screen.dart';
 
+import '../Search/search_page.dart';
+
 class RouteGenerator {
   static const String homePage = '/';
   static const String listPage = '/list';
+  static const String searchPage = '/search';
 
   RouteGenerator._();
 

@@ -17,4 +17,8 @@ class GkeeperHomeCubit extends Cubit<GkeeperHomeState> {
     list.title = str;
     emit(const GkeeperHomeInitial());
   }
+
+  void selectItem(String entry, int num) {
+    emit(GKeeperItemSelected(entry, num));
+  }
 }

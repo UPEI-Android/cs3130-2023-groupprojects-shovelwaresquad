@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_keeper/list/cubit/gkeeper_local_list_cubit.dart';
 
+import '../../Search/search_page.dart';
 import '../../home/cubit/gkeeper_home_cubit.dart';
 import '../../listItem/listItem.dart';
+import '../../routes/route_generator.dart';
 
 class GKeeperList extends StatefulWidget {
 
@@ -82,7 +84,19 @@ class _GKeeperList extends State<GKeeperList>{
                                     height: 60,
                                     padding: const EdgeInsets.all(8),
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) => SearchPage(
+                                                  passedString: tempItemName,
+                                                ),
+                                              ));
+                                          /*setState(() {
+                                            context.read<GkeeperHomeCubit>()
+                                                .selectItem(tempItemName, lState.num);
+                                        });*/
+                                      },
                                       child: const Text('Search'),
                                     ),
                                   ),
