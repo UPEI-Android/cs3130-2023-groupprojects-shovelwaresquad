@@ -53,8 +53,10 @@ class _GKeeperHome extends State<GKeeperHome>{
                             child: Container(
                             height: 100,
                             decoration: BoxDecoration(
+                              border: Border.all(width: 0.5),
+                              borderRadius: BorderRadius.circular(4),
                             // Alternate slight variations of white
-                            color: index % 2 == 0 ? const Color(0xffffffff) : const Color(0xfcfcfcfc)
+                             color: index % 2 == 0 ? Theme.of(context).cardColor : Theme.of(context).splashColor
                             ),
                               child: Column (
                                   children: [
@@ -88,6 +90,7 @@ class _GKeeperHome extends State<GKeeperHome>{
                 }),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
+                backgroundColor: Theme.of(context).backgroundColor,
               );
             }
           )
