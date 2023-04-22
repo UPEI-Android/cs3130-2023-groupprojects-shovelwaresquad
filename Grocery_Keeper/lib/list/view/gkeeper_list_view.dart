@@ -120,7 +120,7 @@ class _GKeeperList extends State<GKeeperList>{
                         }
                     );
                   },
-                  backgroundColor: Colors.green,
+                  backgroundColor: Theme.of(context).backgroundColor,
                   heroTag: 'buttonAdd',
                   child: const Icon(Icons.add),
                 ),
@@ -166,7 +166,7 @@ class _GKeeperList extends State<GKeeperList>{
 
                     );
                   },
-                  backgroundColor: Colors.green,
+                  backgroundColor: Theme.of(context).backgroundColor,
                   heroTag: 'buttonRemove',
                   child: const Icon(Icons.remove),
                 ),
