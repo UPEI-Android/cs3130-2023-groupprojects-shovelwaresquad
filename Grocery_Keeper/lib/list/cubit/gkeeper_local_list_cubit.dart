@@ -30,6 +30,16 @@ class GKeeperLocalListCubit extends Cubit<GKeeperLocalListState> {
     db.put(lists);
   }
 
+  void removeList(int index){
+    List<GKeeperListRecord> lists = []..addAll(state.lists);
+
+    lists.removeAt(index);
+    db.box.clear();
+    emit(state.copyWith(lists: lists));
+
+    db.put(lists);
+  }
+
   void updateList(String item,int index){
     List<GKeeperListRecord> lists = []..addAll(state.lists);
 

@@ -40,8 +40,11 @@ class _GKeeperHome extends State<GKeeperHome>{
               return BlocBuilder<GKeeperLocalListCubit, GKeeperLocalListState>(
                   builder: (contextLocal, stateLocal) {
                     if (stateLocal.lists.isEmpty) {
-                      return const Center(child:
-                        Text("No Lists Created", style: TextStyle(fontSize: 25))
+                      return Center(
+                          child: Image.asset(
+                            WidgetsBinding.instance.window.platformBrightness == Brightness.dark ? 'images/grocery_keeper_white.png' : 'images/grocery_keeper_nolist.png',
+                            fit: BoxFit.contain, height: 400,
+                          )
                       );
                     } else {
                       return ListView.builder(
@@ -64,6 +67,7 @@ class _GKeeperHome extends State<GKeeperHome>{
                             child: Container(
                             height: 100,
                             decoration: BoxDecoration(
+
                               border: Border.all(width: 0.5),
                               borderRadius: BorderRadius.circular(4),
                             // Alternate slight variations of white
@@ -75,6 +79,15 @@ class _GKeeperHome extends State<GKeeperHome>{
                                       //initialValue: stateLocal.lists[index].listTitle,
                                       controller: _controller[index],
                                       style: const TextStyle(fontSize: 25),
+                                      decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                          onPressed: (){
+                                            context.read<GKeeperLocalListCubit>().removeList(index);
+                                            _controller.removeAt(index);
+                                          },
+                                          icon: Icon(Icons.delete),
+                                        )
+                                      ),
                                       onFieldSubmitted: (_){
                                         context.read<GKeeperLocalListCubit>().changeLocalTitle(_controller[index].text, stateLocal.lists[index].content, index);
                                       },
@@ -99,6 +112,7 @@ class _GKeeperHome extends State<GKeeperHome>{
                 onPressed: () => setState(() {
                   contextList.read<ListCubit>().addList("Enter Title Here", ["Enter First Item"]);
                   context.read<GKeeperLocalListCubit>().addList("Enter Title Here", ["Enter First Item"]);
+
                 }),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
