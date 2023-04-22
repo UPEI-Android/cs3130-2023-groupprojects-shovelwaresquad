@@ -16,6 +16,16 @@ class GKeeperHome extends StatefulWidget {
 
 class _GKeeperHome extends State<GKeeperHome>{
 
+  List<TextEditingController> _controller = [];
+
+  @override
+  void dispose(){
+    _controller.forEach((element) {
+      element.dispose();
+    });
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GkeeperHomeCubit, GkeeperHomeState>(
@@ -37,6 +47,7 @@ class _GKeeperHome extends State<GKeeperHome>{
                       return ListView.builder(
                         itemCount: stateLocal.lists.length,
                         itemBuilder: (BuildContext context, int index) {
+                          _controller.add(TextEditingController(text: stateLocal.lists[index].listTitle));
                           return InkWell(
                             onTap: () => setState(() {
                               ListItem item = ListItem(stateLocal.lists[index].listTitle,
@@ -61,11 +72,12 @@ class _GKeeperHome extends State<GKeeperHome>{
                               child: Column (
                                   children: [
                                     TextFormField (
-                                      initialValue: stateLocal.lists[index].listTitle,
+                                      //initialValue: stateLocal.lists[index].listTitle,
+                                      controller: _controller[index],
                                       style: const TextStyle(fontSize: 25),
-                                      onSaved: (text) => setState(() {
-                                        context.read<GkeeperHomeCubit>().changeTitle(stateList[index], text as String);
-                                      })
+                                      onFieldSubmitted: (_){
+                                        context.read<GKeeperLocalListCubit>().changeLocalTitle(_controller[index].text, stateLocal.lists[index].content, index);
+                                      },
                                     ),
                                     const Spacer(),
                                     Text(stateLocal.lists[index].content.toString()),
