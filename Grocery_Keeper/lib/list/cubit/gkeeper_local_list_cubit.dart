@@ -30,6 +30,16 @@ class GKeeperLocalListCubit extends Cubit<GKeeperLocalListState> {
     db.put(lists);
   }
 
+  void removeList(int index){
+    List<GKeeperListRecord> lists = []..addAll(state.lists);
+
+    lists.removeAt(index);
+    db.box.clear();
+    emit(state.copyWith(lists: lists));
+
+    db.put(lists);
+  }
+
   void updateList(String item,int index){
     List<GKeeperListRecord> lists = []..addAll(state.lists);
 
@@ -50,9 +60,15 @@ class GKeeperLocalListCubit extends Cubit<GKeeperLocalListState> {
     db.put(lists);
   }
 
-  void changeLocalTitle(ListItem list, String title){
+  void changeLocalTitle(String title, List<String> content, int index) {
     List<GKeeperListRecord> lists = []..addAll(state.lists);
 
+    GKeeperListRecord list = GKeeperListRecord(title, content);
+    lists[index] = list;
+
+    emit(state.copyWith(lists: lists));
+
+    db.put(lists);
   }
 
 }

@@ -70,6 +70,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/grocery_keeper.png
+    - images/grocery_keeper_nolist.png
+    - images/grocery_keeper_white.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
