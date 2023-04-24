@@ -73,7 +73,7 @@ void main(){
     verify(()=>box.put(0, listA)).called(1);
   });
   
-  test("db.put does not change the order of the lis when box.put is called", () {
+  test("db.put does not change the order of the list when box.put is called", () {
     when(()=>box.isOpen).thenReturn(true);
     when(()=>box.put(any(), any())).thenAnswer((_) async=> {});
     List<GKeeperListRecord> lists = <GKeeperListRecord>[
@@ -106,7 +106,7 @@ void main(){
     verify(()=>box.get(any())).called(3);
   });
   
-  test("db.getLeaders does not alter the order from box.get", () {
+  test("db.getLists does not alter the order from box.get", () {
     when(()=>box.isOpen).thenReturn(true);
     when( ()=>box.length).thenReturn(3);
     when( ()=>box.get(0)).thenReturn(GKeeperListRecord("A", ["a"]));
