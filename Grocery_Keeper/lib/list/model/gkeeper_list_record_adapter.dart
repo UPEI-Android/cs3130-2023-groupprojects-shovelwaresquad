@@ -1,5 +1,7 @@
 part of 'gkeeper_list_record.dart';
 
+//Based on the lab on local storage done in the CS3130 class
+//Credit to Chriss Vessey and Andrew Godbout
 class GKeeperListRecordAdpater extends TypeAdapter<GKeeperListRecord>{
 
   @override

@@ -5,7 +5,8 @@ import '../model/gkeeper_list_record.dart';
 import '../database/gkeeper_local_list_database.dart';
 
 part 'gkeeper_local_list_state.dart';
-
+//Based on the lab on local storage done in the CS3130 class
+//Credit to Chriss Vessey and Andrew Godbout
 class GKeeperLocalListCubit extends Cubit<GKeeperLocalListState> {
 
   GKeeperLocalListDatabase db;

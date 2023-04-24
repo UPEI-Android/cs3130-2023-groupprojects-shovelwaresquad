@@ -2,7 +2,8 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import '../model/gkeeper_list_record.dart';
-
+//Based on the lab on local storage done in the CS3130 class
+//Credit to Chriss Vessey and Andrew Godbout
 class UnOpenedDBException implements Exception{}
 
 class  GKeeperLocalListDatabase {

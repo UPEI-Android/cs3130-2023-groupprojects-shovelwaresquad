@@ -16,7 +16,8 @@ class GKeeperList extends StatefulWidget {
 
 
 }
-
+//Class that constructs the widget to show the contents of a grocery list
+//Also contains the functionality to add, search in the web and remover items form teh list
 class _GKeeperList extends State<GKeeperList>{
   @override
   Widget build(BuildContext context) {

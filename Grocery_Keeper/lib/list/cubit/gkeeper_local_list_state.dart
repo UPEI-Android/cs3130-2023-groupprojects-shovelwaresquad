@@ -1,7 +1,8 @@
 part of 'gkeeper_local_list_cubit.dart';
 
 enum ListStatus {loading, loaded, error}
-
+//Based on the lab on local storage done in the CS3130 class
+//Credit to Chriss Vessey and Andrew Godbout
 class GKeeperLocalListState extends Equatable {
 
   final List<GKeeperListRecord> lists;

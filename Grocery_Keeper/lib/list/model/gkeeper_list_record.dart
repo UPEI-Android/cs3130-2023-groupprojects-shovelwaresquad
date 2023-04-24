@@ -3,6 +3,8 @@ import 'package:hive/hive.dart';
 
 part 'gkeeper_list_record_adapter.dart';
 
+//Based on the lab on local storage done in the CS3130 class
+//Credit to Chriss Vessey and Andrew Godbout
 @HiveType(typeId: 0)
 class GKeeperListRecord extends Equatable{
 
